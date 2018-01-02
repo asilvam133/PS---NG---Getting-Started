@@ -58,8 +58,9 @@ export class ProductListComponent implements OnInit {
     constructor() {
         this.filteredProducts = this.products;
         this.listFilter = 'cart';
-     }
-
+            },
+            error => this.errorMessage = <any>error
+        );
     ngOnInit(): void {
         console.log('OnInit');
     }
