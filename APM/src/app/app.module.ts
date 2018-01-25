@@ -1,3 +1,4 @@
+import { ProductGuardService } from './products/product-guard.service';
 import { WelcomeComponent } from './home/welcome.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -11,30 +12,21 @@ import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { StarComponent } from './shared/star.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductDetailComponent } from './products/product-detail.component';
+import { ProductModule } from './products/product.module';
+import { APP_ROUTING } from './app.routing';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductListComponent,
-    ConvertToSpacesPipe,
-    StarComponent,
-    ProductDetailComponent,
     WelcomeComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule,
-    RouterModule.forRoot([
-      {path: 'products', component: ProductListComponent},
-      {path: 'products/:id', component: ProductListComponent},
-      {path: 'welcome', component: WelcomeComponent},
-      {path: '', redirectTo: 'welcome', pathMatch: 'full'},
-      {path: '**', redirectTo: 'welcome', pathMatch: 'full'}
-    ])
+    ProductModule,
+    APP_ROUTING
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
